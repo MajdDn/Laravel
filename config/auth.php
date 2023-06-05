@@ -56,11 +56,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'api' => [
-            'driver' => 'jwt',
-            'provider' => 'users',
-            'hash' => false,
+        'webadmin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
+        // 'api' => [
+        //     'driver' => 'jwt',
+        //     'provider' => 'users',
+        //     'hash' => false,
+        // ],
     ],
     /*
     |--------------------------------------------------------------------------
@@ -85,10 +89,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
     ],
 
     /*

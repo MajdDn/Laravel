@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\UserAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +65,24 @@ Route::get('/send', '\App\Http\Controllers\NotificationController@sendOfferNotif
 //     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 // });
 
+
+Route::get('/', [UserAuthController::class, 'index'])
+->name('user.home')
+->middleware('auth:web');
+Route::get('/login', [UserAuthController::class, 'login'])
+    ->name('user.login');
+Route::post('/login', [UserAuthController::class, 'handleLogin'])
+    ->name('user.handleLogin');
+Route::get('/logout', [UserAuthController::class, 'index'])
+    ->name('user.logout');
+
+
+
+
+Route::get('admin/', [AdminAuthController::class, 'index'])->name('admin.home')->middleware('auth:webadmin');
+Route::get('admin/login', [AdminAuthController::class, 'login'])
+    ->name('admin.login');
+Route::post('admin/login', [AdminAuthController::class, 'handleLogin'])
+    ->name('admin.handleLogin');
+Route::get('admin/logout', [AdminAuthController::class, 'index'])
+    ->name('admin.logout');
