@@ -19,14 +19,12 @@ class AdminAuthController extends Controller
 
     public function handleLogin(Request $req)
     {
-        if(auth::guard('webadmin')
-               ->attempt($req->only(['email', 'password'])))
+        if(Auth::guard('webadmin')
+        ->attempt($req->only(['email', 'password'])))
         {
             return redirect()
                 ->route('admin.home');
-        }
-
-        return redirect()
+        } return redirect()
             ->back()
             ->with('error', 'Invalid Credentials');
     }
