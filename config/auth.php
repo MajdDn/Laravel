@@ -60,11 +60,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        // 'api' => [
-        //     'driver' => 'jwt',
-        //     'provider' => 'users',
-        //     'hash' => false,
-        // ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
     /*
     |--------------------------------------------------------------------------
